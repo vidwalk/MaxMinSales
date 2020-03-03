@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1022
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "MaxMinSalesDm", "MaxMinSalesDm\MaxMinSalesDm.dwproj", "{F1CC2150-4B18-48C8-B38C-0E926885FAA3}"
 EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "AdventureWorksDM", "AdventureWorksDM\AdventureWorksDM.dwproj", "{BE7FFE3D-E3C9-4E75-AEF4-73BF5F13494C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|Default = Development|Default
@@ -13,6 +15,9 @@ Global
 		{F1CC2150-4B18-48C8-B38C-0E926885FAA3}.Development|Default.ActiveCfg = Development
 		{F1CC2150-4B18-48C8-B38C-0E926885FAA3}.Development|Default.Build.0 = Development
 		{F1CC2150-4B18-48C8-B38C-0E926885FAA3}.Development|Default.Deploy.0 = Development
+		{BE7FFE3D-E3C9-4E75-AEF4-73BF5F13494C}.Development|Default.ActiveCfg = Development
+		{BE7FFE3D-E3C9-4E75-AEF4-73BF5F13494C}.Development|Default.Build.0 = Development
+		{BE7FFE3D-E3C9-4E75-AEF4-73BF5F13494C}.Development|Default.Deploy.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
