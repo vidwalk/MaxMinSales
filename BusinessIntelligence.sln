@@ -7,6 +7,8 @@ Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "MaxMinSalesDm", "MaxMinSale
 EndProject
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "AdventureWorksDM", "AdventureWorksDM\AdventureWorksDM.dwproj", "{BE7FFE3D-E3C9-4E75-AEF4-73BF5F13494C}"
 EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "MaxMinManufacturingDM", "MultidimensionalProject1\MaxMinManufacturingDM.dwproj", "{23C3DFC5-34D7-4418-82F9-C5D9D8C2D477}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|Default = Development|Default
@@ -18,6 +20,9 @@ Global
 		{BE7FFE3D-E3C9-4E75-AEF4-73BF5F13494C}.Development|Default.ActiveCfg = Development
 		{BE7FFE3D-E3C9-4E75-AEF4-73BF5F13494C}.Development|Default.Build.0 = Development
 		{BE7FFE3D-E3C9-4E75-AEF4-73BF5F13494C}.Development|Default.Deploy.0 = Development
+		{23C3DFC5-34D7-4418-82F9-C5D9D8C2D477}.Development|Default.ActiveCfg = Development
+		{23C3DFC5-34D7-4418-82F9-C5D9D8C2D477}.Development|Default.Build.0 = Development
+		{23C3DFC5-34D7-4418-82F9-C5D9D8C2D477}.Development|Default.Deploy.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

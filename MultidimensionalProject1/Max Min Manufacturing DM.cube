@@ -1,0 +1,202 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="b2857fd8-f77a-4ffc-be85-bccf1345fe60" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Max Min Manufacturing DM</ID>
+  <Name>Max Min Manufacturing DM</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Dimensions>
+    <Dimension dwd:design-time-name="896af99d-d508-44d9-800a-cd2da5c0b287">
+      <ID>Dim Product</ID>
+      <Name>Dim Product</Name>
+      <DimensionID>Dim Product</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="a906e501-824b-4f45-988c-18c3dafa6112">
+          <AttributeID>Product Code</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="72155f7a-25ea-4692-9bce-4865c5a710e3">
+          <AttributeID>Product Subtype Code</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="d6ecb25f-5d65-4674-8e16-97d42c1abfe8">
+          <AttributeID>Product Type Code</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="0c45de43-0915-4ee4-80ed-adf3372ae52d">
+      <ID>Dim Batch</ID>
+      <Name>Dim Batch</Name>
+      <DimensionID>Dim Batch</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="ee1e8f17-ead4-4b29-9dc8-15dccf861fca">
+          <AttributeID>Batch Number</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="a2c87d87-0f4b-4203-b726-4903e86c8370">
+      <ID>Dim Machine</ID>
+      <Name>Dim Machine</Name>
+      <DimensionID>Dim Machine</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="09105198-179b-41df-a121-0ae851cecc06">
+          <AttributeID>Machine Number</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="a6bba2b0-ba83-4b1f-9f0e-33d2d0e9c4fb">
+          <AttributeID>Machine Type Key</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="43d081e6-eb89-4031-8e6c-8bf9b8573957">
+          <AttributeID>Material Key</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="9856b7e0-6873-4388-883e-da918b9571b1">
+          <AttributeID>Plant Number</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="c72c92cd-43ab-452c-bb91-f3366d47f96d">
+          <AttributeID>Country Key</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="6b4abf1b-5ee6-4e52-9b96-694a16a8d430">
+      <ID>Fact Manufacturing</ID>
+      <Name>Fact Manufacturing</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="7ecc42dc-090b-41cc-bdcf-9e10ebc3b403">
+          <ID>Accepted Products</ID>
+          <Name>Accepted Products</Name>
+          <Source dwd:design-time-name="0f4bef05-fb2f-463f-8574-10eff50c89ea">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="f723f1ee-d354-42bc-88f9-ff4ecc11dd66">
+              <TableID>dbo_FactManufacturing</TableID>
+              <ColumnID>AcceptedProducts</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="cb461b29-3469-4981-8dc7-0aa2de478e63">
+          <ID>Rejected Products</ID>
+          <Name>Rejected Products</Name>
+          <Source dwd:design-time-name="3974c5b8-8c06-401a-adb6-ba88f7d2b268">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="7267e3bd-55e2-4a87-b364-c0028d035c9b">
+              <TableID>dbo_FactManufacturing</TableID>
+              <ColumnID>RejectedProducts</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="f01ca1ee-04d5-4799-a437-06e453638d51">
+          <ID>Elapsed Time For Manufacture</ID>
+          <Name>Elapsed Time For Manufacture</Name>
+          <Source dwd:design-time-name="db9eeefd-d9b0-4aa8-b8ad-08f2abf09d2b">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="5b31d73a-f31d-42f3-97ba-c6275c678d83">
+              <TableID>dbo_FactManufacturing</TableID>
+              <ColumnID>ElapsedTimeForManufacture</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="fd27f1a4-eb45-44ec-b880-15c154930ada">
+          <CubeDimensionID>Dim Product</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="f6a20c32-7ea1-4ab2-b45f-91a17458cba1">
+              <AttributeID>Product Code</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="e83b2879-a2f2-4e39-ada4-9426a7aa3e97">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="8804525c-25bb-46d7-a5e0-3fbb5555024f">
+                    <TableID>dbo_FactManufacturing</TableID>
+                    <ColumnID>ProductCode</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="7afd8321-202e-4387-93b0-dc6293b0c483">
+          <CubeDimensionID>Dim Batch</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="45b13d07-0e03-4e71-be08-30098acea83d">
+              <AttributeID>Batch Number</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="cfbe6a4e-e285-4fb4-aebf-f92df6c832fb">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="670f481f-ee3d-4fa5-9d83-f1879ddf3484">
+                    <TableID>dbo_FactManufacturing</TableID>
+                    <ColumnID>BatchNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="e6c07028-b090-4e68-ae2a-b5d10f4b430b">
+          <CubeDimensionID>Dim Machine</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="c18af051-4eae-4b76-ab54-581afed4981e">
+              <AttributeID>Machine Number</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="792a8b1e-6c52-4ee5-8f6d-544a504975d6">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="7138476d-be3a-49dc-864f-c1a89b5189fa">
+                    <TableID>dbo_FactManufacturing</TableID>
+                    <ColumnID>MachineNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="53d2589a-c153-41ca-97a6-5518a45562bf">
+    <DataSourceViewID>Max Min Manufacturing DM</DataSourceViewID>
+  </Source>
+</Cube>
