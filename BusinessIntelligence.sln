@@ -9,6 +9,8 @@ Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "AdventureWorksDM", "Adventu
 EndProject
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "MaxMinManufacturingDM", "MultidimensionalProject1\MaxMinManufacturingDM.dwproj", "{23C3DFC5-34D7-4418-82F9-C5D9D8C2D477}"
 EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProfitabilityOverTime", "ProfitabilityOverTime\ProfitabilityOverTime.dwproj", "{B94C1336-6E34-49AF-8C16-2DF4C9C9C815}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|Default = Development|Default
@@ -23,6 +25,9 @@ Global
 		{23C3DFC5-34D7-4418-82F9-C5D9D8C2D477}.Development|Default.ActiveCfg = Development
 		{23C3DFC5-34D7-4418-82F9-C5D9D8C2D477}.Development|Default.Build.0 = Development
 		{23C3DFC5-34D7-4418-82F9-C5D9D8C2D477}.Development|Default.Deploy.0 = Development
+		{B94C1336-6E34-49AF-8C16-2DF4C9C9C815}.Development|Default.ActiveCfg = Development
+		{B94C1336-6E34-49AF-8C16-2DF4C9C9C815}.Development|Default.Build.0 = Development
+		{B94C1336-6E34-49AF-8C16-2DF4C9C9C815}.Development|Default.Deploy.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
