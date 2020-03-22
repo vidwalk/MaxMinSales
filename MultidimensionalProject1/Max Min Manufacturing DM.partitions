@@ -1,19 +1,49 @@
-﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="a2db01e0-399e-4ed9-8329-c9f332e045cc" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="c426258a-0d3b-4d50-b859-f4f8eaccefbd" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Max Min Manufacturing DM</ID>
   <MeasureGroups>
     <MeasureGroup>
       <ID>Fact Manufacturing</ID>
       <Partitions>
-        <Partition dwd:design-time-name="ef77a137-9ed9-4fca-a2d3-697e1e6f324d">
-          <ID>Fact Manufacturing</ID>
-          <Name>Fact Manufacturing</Name>
+        <Partition dwd:design-time-name="fa039f61-0b48-4174-8a22-9a68af9d6d4f">
+          <ID>Fact Manufacturing 2013</ID>
+          <Name>Fact Manufacturing 2013</Name>
           <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
           <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
           <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
           <State>Unprocessed</State>
-          <Source xsi:type="DsvTableBinding" dwd:design-time-name="75c1fd08-5e28-4cbc-9adc-b1c1a0678375">
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="a40dc227-1225-4c66-b0dc-c89f8dff752b">
             <DataSourceViewID>Max Min Manufacturing DM</DataSourceViewID>
-            <TableID>dbo_FactManufacturing</TableID>
+            <TableID>FactManufacturing_2013</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="f8b8587e-0986-4065-9a7b-8986967e2a78">
+          <ID>Fact Manufacturing 2014</ID>
+          <Name>Fact Manufacturing 2014</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="e23728c5-0de2-4a9e-8182-4d5835f4f42e">
+            <DataSourceViewID>Max Min Manufacturing DM</DataSourceViewID>
+            <TableID>FactManufacturing_2014</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="89e5827d-e5b3-4a87-bd56-fb3b00309bf5">
+          <ID>Fact Manufacturing Current</ID>
+          <Name>Fact Manufacturing Current</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="e55c0db1-bea6-4da2-893d-37e2ab7c0592">
+            <DataSourceViewID>Max Min Manufacturing DM</DataSourceViewID>
+            <TableID>FactManufacturing_Current</TableID>
           </Source>
           <StorageMode>Molap</StorageMode>
           <CurrentStorageMode>Molap</CurrentStorageMode>
@@ -24,14 +54,14 @@
     <MeasureGroup>
       <ID>Fact Inventory</ID>
       <Partitions>
-        <Partition dwd:design-time-name="6b53fa1b-e22b-4c7c-81c1-4a2f3ffd1554">
+        <Partition dwd:design-time-name="9eb83b63-c436-4449-a50c-2814c835879d">
           <ID>Fact Inventory</ID>
           <Name>Fact Inventory</Name>
           <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
           <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
           <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
           <State>Unprocessed</State>
-          <Source xsi:type="DsvTableBinding" dwd:design-time-name="828e5231-d20e-4aa6-832a-26130cb72d7b">
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="0ff8eebc-089a-44e1-9db7-13189d4afdb2">
             <DataSourceViewID>Max Min Manufacturing DM</DataSourceViewID>
             <TableID>dbo_FactInventory</TableID>
           </Source>
