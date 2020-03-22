@@ -409,6 +409,11 @@
           <AttributeID>Product Type Code</AttributeID>
         </Attribute>
       </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="29f221cf-8796-45c9-89ba-d309284fbdca">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
     </Dimension>
     <Dimension dwd:design-time-name="45aea760-713c-409a-8120-dca0af24a82d">
       <ID>Dim Batch</ID>
@@ -441,6 +446,14 @@
           <AttributeID>Country Key</AttributeID>
         </Attribute>
       </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="b41d190b-ca27-4a7b-a240-dfedb0cce91f">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+        <Hierarchy dwd:design-time-name="f2d7124a-d603-41c4-8e22-4b558730af2b">
+          <HierarchyID>Hierarchy 1</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
     </Dimension>
   </Dimensions>
   <MeasureGroups>
