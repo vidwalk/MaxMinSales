@@ -13,6 +13,8 @@ Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProfitabilityOverTime", "Pr
 EndProject
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "PaymentMethods", "PaymentMethods\PaymentMethods.dwproj", "{C946771D-C3E9-49DC-969F-820F95D4E9BB}"
 EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "OrderForecast", "OrderForecast\OrderForecast.dwproj", "{1B8D0083-DAA7-42B8-9BEF-17573CE9E403}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|Default = Development|Default
@@ -33,6 +35,9 @@ Global
 		{C946771D-C3E9-49DC-969F-820F95D4E9BB}.Development|Default.ActiveCfg = Development
 		{C946771D-C3E9-49DC-969F-820F95D4E9BB}.Development|Default.Build.0 = Development
 		{C946771D-C3E9-49DC-969F-820F95D4E9BB}.Development|Default.Deploy.0 = Development
+		{1B8D0083-DAA7-42B8-9BEF-17573CE9E403}.Development|Default.ActiveCfg = Development
+		{1B8D0083-DAA7-42B8-9BEF-17573CE9E403}.Development|Default.Build.0 = Development
+		{1B8D0083-DAA7-42B8-9BEF-17573CE9E403}.Development|Default.Deploy.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
