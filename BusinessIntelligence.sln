@@ -17,6 +17,8 @@ Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "OrderForecast", "OrderForec
 EndProject
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "MaxMinSalesReports", "MaxMinSalesReports\MaxMinSalesReports.rptproj", "{B86C66CF-D7FE-45C8-B3DD-B66C5886DD36}"
 EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "PaymentMethodsReports", "PaymentMethodsReports\PaymentMethodsReports.rptproj", "{6550EE4F-9FC0-48A8-85C5-12821795573A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Default = Debug|Default
@@ -107,6 +109,16 @@ Global
 		{B86C66CF-D7FE-45C8-B3DD-B66C5886DD36}.Release|Default.ActiveCfg = Release
 		{B86C66CF-D7FE-45C8-B3DD-B66C5886DD36}.Release|Default.Build.0 = Release
 		{B86C66CF-D7FE-45C8-B3DD-B66C5886DD36}.Release|Default.Deploy.0 = Release
+		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Debug|Default.ActiveCfg = Debug
+		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Debug|Default.Build.0 = Debug
+		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Debug|Default.Deploy.0 = Debug
+		{6550EE4F-9FC0-48A8-85C5-12821795573A}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{6550EE4F-9FC0-48A8-85C5-12821795573A}.DebugLocal|Default.Build.0 = DebugLocal
+		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Development|Default.ActiveCfg = DebugLocal
+		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Development|Default.Build.0 = DebugLocal
+		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Release|Default.ActiveCfg = Release
+		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Release|Default.Build.0 = Release
+		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Release|Default.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="a5500c74-027a-4040-a79c-d82a87d97f7a" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="d0af93c2-e9f6-42f5-b4d7-7b05a607cf67" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Wide World Importers DW</ID>
   <Name>Wide World Importers DW</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
@@ -158,88 +158,88 @@
   <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
   <Dimensions>
-    <Dimension dwd:design-time-name="ef7ef556-c3b2-4d05-9010-0b6838cb3b40">
+    <Dimension dwd:design-time-name="cfbd5943-e009-4174-aa23-5dfb4405e61d">
       <ID>Payment Method</ID>
       <Name>Payment Method</Name>
       <DimensionID>Payment Method</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="bc7a29e0-6904-4d11-a152-7f7818b7d534">
+        <Attribute dwd:design-time-name="23e82dbb-6e7d-4b5c-a65e-763440e2e3cf">
           <AttributeID>Payment Method Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="c5b28c80-e2a4-4f73-8b60-05581baa6365">
+        <Attribute dwd:design-time-name="dc3f51b3-9ce5-4aeb-a712-cefbb3d93c41">
           <AttributeID>Payment Method</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="185195fd-ff4f-49d6-8393-b9054f9ff088">
+        <Attribute dwd:design-time-name="fb8014f4-f9ba-4f9c-8f80-a5840b6658c3">
           <AttributeID>Valid To</AttributeID>
         </Attribute>
       </Attributes>
     </Dimension>
-    <Dimension dwd:design-time-name="ec505e79-1043-4745-9a09-edef9e7a8b68">
+    <Dimension dwd:design-time-name="f245a5a9-a8c1-40dc-9483-b89b83afafcf">
       <ID>Transaction</ID>
       <Name>Transaction</Name>
       <DimensionID>Transaction</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="e26b55f0-c1d1-486f-9d1f-9e00dbb2ea3e">
+        <Attribute dwd:design-time-name="3ecb7e77-9110-4bba-b427-89740ff2c63d">
           <AttributeID>Transaction Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="5c15b859-1957-4b73-b08f-286c07a52685">
+        <Attribute dwd:design-time-name="4fed6d36-b237-4dcf-8591-9f4f8311e341">
           <AttributeID>Payment Method Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="8f81ca93-0709-41ff-a20f-2911572aee58">
+        <Attribute dwd:design-time-name="10a7d4fc-5dc3-4708-b1e3-65784b71fb4d">
           <AttributeID>Bill To Customer Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="8beb737a-a777-4c05-a1d4-ba6f7f7d4bc4">
+        <Attribute dwd:design-time-name="75fd8e65-1ae9-4d15-a968-248221f9fdb0">
           <AttributeID>Supplier Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="22ab7528-cc25-437c-a09d-08b20bb2d1b4">
+        <Attribute dwd:design-time-name="8298c2ed-5c51-4843-ae64-486b257a685e">
           <AttributeID>Date Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="2af304f4-39c9-4747-a094-d4d712184f9e">
+        <Attribute dwd:design-time-name="ac50f985-dcb1-4510-8ce8-268991533434">
           <AttributeID>Transaction Type Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="b0df7ce2-71dc-4541-a5ed-583af1a23aaf">
+        <Attribute dwd:design-time-name="77942781-541c-4903-beb0-129e8a73693a">
           <AttributeID>Customer Key</AttributeID>
         </Attribute>
       </Attributes>
     </Dimension>
-    <Dimension dwd:design-time-name="57e6ce71-de95-4b12-8bd9-6864590a73b3">
+    <Dimension dwd:design-time-name="9c9236b4-c73e-4614-b09c-11e48acd1638">
       <ID>Supplier</ID>
       <Name>Supplier</Name>
       <DimensionID>Supplier</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="e802844e-1a41-416f-9bca-7c3b6c68ceda">
+        <Attribute dwd:design-time-name="3292e9e5-e1f3-40f0-a795-2f814966b67d">
           <AttributeID>Supplier Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="cc9c6e52-b5b4-4446-8d3f-22f05b004773">
+        <Attribute dwd:design-time-name="5043203f-3674-4e26-9c01-fc3169f07d5c">
           <AttributeID>Valid To</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="82355c32-72c7-4274-8a97-592696856e8b">
+        <Attribute dwd:design-time-name="4d211879-4f6a-4eff-b137-f2feba4d24a9">
           <AttributeID>Supplier</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="5dadf95b-c675-4853-bc1b-ade268f916b9">
+        <Attribute dwd:design-time-name="52e859dc-c698-4127-af94-cfc2d09fd43f">
           <AttributeID>Category</AttributeID>
         </Attribute>
       </Attributes>
     </Dimension>
-    <Dimension dwd:design-time-name="3766d135-f70d-4373-aaad-90e4b7231f8b">
+    <Dimension dwd:design-time-name="fe6abe36-2300-466b-b90a-e1c6f3e136b0">
       <ID>Date</ID>
       <Name>Date</Name>
       <DimensionID>Date</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="85792666-40bd-48e9-bfe1-6cb6dcafc929">
+        <Attribute dwd:design-time-name="4454f55f-009d-44e1-8ec2-1b9dcf9ef3bf">
           <AttributeID>Date</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="324ccec4-0dbd-47b4-8fc6-f2746242f865">
+        <Attribute dwd:design-time-name="7d4f2266-6576-4aa6-b260-6a6a37d3cdc1">
           <AttributeID>Calendar Year</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="93b56d83-f362-492d-9a3a-4aba9e8d03c9">
+        <Attribute dwd:design-time-name="6f0c4256-6dd8-4cf0-9ce9-f83934830169">
           <AttributeID>Month</AttributeID>
         </Attribute>
       </Attributes>
     </Dimension>
   </Dimensions>
   <MeasureGroups>
-    <MeasureGroup dwd:design-time-name="5432283e-be93-467e-a38e-f34692200bb7">
+    <MeasureGroup dwd:design-time-name="51847bda-6666-44dc-8010-6b83c53a211c">
       <ID>Transaction</ID>
       <Name>Transaction</Name>
       <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
@@ -247,25 +247,25 @@
       <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
       <State>Unprocessed</State>
       <Measures>
-        <Measure dwd:design-time-name="d2bd9f61-f0c5-4293-8174-e3aecf9f399f">
+        <Measure dwd:design-time-name="b7acaba3-5426-4edf-b17b-376b65185222">
           <ID>Total Including Tax</ID>
           <Name>Total Including Tax</Name>
-          <Source dwd:design-time-name="38ced4fd-67b9-4182-9601-9505620f333c">
+          <Source dwd:design-time-name="bd29437c-431d-461a-98d5-d89b4a106b13">
             <DataType>Double</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="ba22706d-4be4-45df-9d67-11f8b36cba89">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="24bd155e-414d-4dd3-99f4-47bfd39ac8eb">
               <TableID>Fact_Transaction</TableID>
               <ColumnID>Total_x0020_Including_x0020_Tax</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="0809222e-df76-40ba-bb72-8b731648b7fb">
+        <Measure dwd:design-time-name="82a6811b-43bd-49d4-b476-8fa0e7437856">
           <ID>Transaction Count</ID>
           <Name>Transaction Count</Name>
           <AggregateFunction>Count</AggregateFunction>
-          <Source dwd:design-time-name="cbde473b-68aa-4cbc-a0af-612c2479e37b">
+          <Source dwd:design-time-name="fef1bc57-4347-4e0b-842b-c92c476fdf64">
             <DataType>Integer</DataType>
             <DataSize>4</DataSize>
-            <Source xsi:type="RowBinding" dwd:design-time-name="84a8139a-a7b2-4536-8ff9-4b3a01aed946">
+            <Source xsi:type="RowBinding" dwd:design-time-name="426045e9-cdcc-4490-8cdf-bb6214a7846b">
               <TableID>Fact_Transaction</TableID>
             </Source>
           </Source>
@@ -274,22 +274,22 @@
       <StorageMode>Molap</StorageMode>
       <ProcessingMode>Regular</ProcessingMode>
       <Dimensions>
-        <Dimension xsi:type="DegenerateMeasureGroupDimension" dwd:design-time-name="51419342-e7ef-47cc-a343-11043c4a6506">
+        <Dimension xsi:type="DegenerateMeasureGroupDimension" dwd:design-time-name="2650c690-4177-422b-bd07-b5430b77a859">
           <CubeDimensionID>Transaction</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="887e3fcf-a44c-42b2-9e61-22d852be35a4">
+            <Attribute dwd:design-time-name="0bf10a62-b3a9-4ce0-8136-36bfb20388c2">
               <AttributeID>Transaction Key</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="cf7e9b45-a171-4d66-ac12-22c1ee7a763e">
+                <KeyColumn dwd:design-time-name="e614abc9-2536-4d9f-b683-2863e557a98c">
                   <DataType>BigInt</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="2b9347b7-c417-4a61-b8be-6e1957aff90e">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="7c8ec684-8537-4ac8-bf9d-56d428fda8ff">
                     <TableID>Fact_Transaction</TableID>
                     <ColumnID>Transaction_x0020_Key</ColumnID>
                   </Source>
                 </KeyColumn>
-                <KeyColumn dwd:design-time-name="55d55972-09b2-46d0-96fa-229fa60fcee3">
+                <KeyColumn dwd:design-time-name="77486983-faee-4178-bf84-6ca69a18d66b">
                   <DataType>Date</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="92091e5b-6c51-4987-9c59-788abb6b6edf">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="736b94df-27a3-49ab-9717-a65f29070876">
                     <TableID>Fact_Transaction</TableID>
                     <ColumnID>Date_x0020_Key</ColumnID>
                   </Source>
@@ -299,16 +299,16 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="50221027-b99c-4d5d-9d6a-fe50f1104d6a">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="5f727d1c-13de-4ea5-a3a1-e7b2aee8a2eb">
           <CubeDimensionID>Payment Method</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="34cfc911-f142-41fd-b11f-a0e4875ba0e7">
+            <Attribute dwd:design-time-name="d0398315-c129-4932-b5d7-4b3bd006f262">
               <AttributeID>Payment Method Key</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="591e4805-e8da-4883-8124-5c65bbb29db0">
+                <KeyColumn dwd:design-time-name="63a265c3-f67c-4794-9c82-12940ee20819">
                   <DataType>Integer</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="5559312c-4020-4ab0-a9dd-0c035354a4e0">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="ebfab462-5518-4cba-8280-0c1e57b77b6f">
                     <TableID>Fact_Transaction</TableID>
                     <ColumnID>Payment_x0020_Method_x0020_Key</ColumnID>
                   </Source>
@@ -318,16 +318,16 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="219edeb4-bbf4-4c96-b6c4-828aa7106842">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="dadb5128-b348-40f8-8b51-3696421e03a1">
           <CubeDimensionID>Supplier</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="cb8203e0-fe58-43df-a4a7-16e5c32caf8d">
+            <Attribute dwd:design-time-name="c185eca4-257d-4bc9-b155-b9dcdf178c02">
               <AttributeID>Supplier Key</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="b5504c01-2e45-40a8-90ad-ddbca67ef497">
+                <KeyColumn dwd:design-time-name="7f037d89-1d25-47cf-804d-d7a61b6256e5">
                   <DataType>Integer</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="a2df096b-59bd-4e07-bde4-6f2af68a7941">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="a96d012b-f1a9-4144-afa7-35017139e336">
                     <TableID>Fact_Transaction</TableID>
                     <ColumnID>Supplier_x0020_Key</ColumnID>
                   </Source>
@@ -337,15 +337,15 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="fa3c901f-6428-4078-9d08-ad5af731b9c7">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="875facae-98ae-40dc-bfac-062bed3cfe35">
           <CubeDimensionID>Date</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="600db20a-267f-4330-b88d-86c60e640553">
+            <Attribute dwd:design-time-name="9c976529-6035-43ae-8026-05d116975b05">
               <AttributeID>Date</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="8e6fdeea-0cdb-4557-8308-f44991bdf0c0">
+                <KeyColumn dwd:design-time-name="778ab96e-45e4-4d05-9f36-f8e70cf41e85">
                   <DataType>Date</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="2f038e0c-6e89-4c32-a7c9-8ceb1731283e">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="95049afc-0160-47c5-9bee-d3a601ceb809">
                     <TableID>Fact_Transaction</TableID>
                     <ColumnID>Date_x0020_Key</ColumnID>
                   </Source>
@@ -359,11 +359,11 @@
       <Partitions />
     </MeasureGroup>
   </MeasureGroups>
-  <Source dwd:design-time-name="0171e71e-2700-4fbf-b524-8934cb962a91">
+  <Source dwd:design-time-name="30a37f0d-104c-4ddb-8649-91d6a7107f27">
     <DataSourceViewID>Wide World Importers DW</DataSourceViewID>
   </Source>
   <MdxScripts>
-    <MdxScript dwd:design-time-name="fc275938-05f0-492b-bd56-5859a861df59">
+    <MdxScript dwd:design-time-name="318e792b-26ca-46b6-a360-0b03e31aeaa7">
       <ID>MdxScript</ID>
       <Name>MdxScript</Name>
       <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
