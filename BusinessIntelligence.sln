@@ -19,6 +19,8 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "MaxMinSalesReports", "MaxMi
 EndProject
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "PaymentMethodsReports", "PaymentMethodsReports\PaymentMethodsReports.rptproj", "{6550EE4F-9FC0-48A8-85C5-12821795573A}"
 EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProfitabilityOverTimeReport", "ProfitabilityOverTimeReport\ProfitabilityOverTimeReport.rptproj", "{4870696B-46D3-447B-9C8F-2C34F146FDA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Default = Debug|Default
@@ -119,6 +121,16 @@ Global
 		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Release|Default.ActiveCfg = Release
 		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Release|Default.Build.0 = Release
 		{6550EE4F-9FC0-48A8-85C5-12821795573A}.Release|Default.Deploy.0 = Release
+		{4870696B-46D3-447B-9C8F-2C34F146FDA8}.Debug|Default.ActiveCfg = Debug
+		{4870696B-46D3-447B-9C8F-2C34F146FDA8}.Debug|Default.Build.0 = Debug
+		{4870696B-46D3-447B-9C8F-2C34F146FDA8}.Debug|Default.Deploy.0 = Debug
+		{4870696B-46D3-447B-9C8F-2C34F146FDA8}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{4870696B-46D3-447B-9C8F-2C34F146FDA8}.DebugLocal|Default.Build.0 = DebugLocal
+		{4870696B-46D3-447B-9C8F-2C34F146FDA8}.Development|Default.ActiveCfg = DebugLocal
+		{4870696B-46D3-447B-9C8F-2C34F146FDA8}.Development|Default.Build.0 = DebugLocal
+		{4870696B-46D3-447B-9C8F-2C34F146FDA8}.Release|Default.ActiveCfg = Release
+		{4870696B-46D3-447B-9C8F-2C34F146FDA8}.Release|Default.Build.0 = Release
+		{4870696B-46D3-447B-9C8F-2C34F146FDA8}.Release|Default.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
