@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>CustomerProfiling</DataSourceReference>
+      <CommandText>SELECT City_1.City, City_1.[State Province], Dimension.Customer.Customer, Fact.Sale.Profit, Fact.Sale.Quantity, Dimension.[Stock Item].[Stock Item], Dimension.[Stock Item].Color
+FROM  Dimension.City AS City_1 INNER JOIN
+         Fact.Sale ON City_1.[City Key] = Fact.Sale.[City Key] INNER JOIN
+         Dimension.Customer ON Fact.Sale.[Customer Key] = Dimension.Customer.[Customer Key] AND Fact.Sale.[Bill To Customer Key] = Dimension.Customer.[Customer Key] INNER JOIN
+         Dimension.[Stock Item] ON Fact.Sale.[Stock Item Key] = Dimension.[Stock Item].[Stock Item Key]</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="City">
+        <DataField>City</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="State_Province">
+        <DataField>State Province</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Customer">
+        <DataField>Customer</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Profit">
+        <DataField>Profit</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Quantity">
+        <DataField>Quantity</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Stock_Item">
+        <DataField>Stock Item</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Color">
+        <DataField>Color</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
