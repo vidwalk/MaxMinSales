@@ -1,0 +1,410 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-GB",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/(local);WideWorldImportersDW",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "(local)",
+            "database": "WideWorldImportersDW"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "Windows",
+          "Username": "claudiurediu@gmail.com",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Dimension Payment Method",
+        "columns": [
+          {
+            "name": "Payment Method Key",
+            "dataType": "int64",
+            "sourceColumn": "Payment Method Key"
+          },
+          {
+            "name": "WWI Payment Method ID",
+            "dataType": "int64",
+            "sourceColumn": "WWI Payment Method ID"
+          },
+          {
+            "name": "Payment Method",
+            "dataType": "string",
+            "sourceColumn": "Payment Method"
+          },
+          {
+            "name": "Valid From",
+            "dataType": "dateTime",
+            "sourceColumn": "Valid From"
+          },
+          {
+            "name": "Valid To",
+            "dataType": "dateTime",
+            "sourceColumn": "Valid To"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/(local);WideWorldImportersDW\",",
+                "    #\"Dimension_Payment Method\" = Source{[Schema=\"Dimension\",Item=\"Payment Method\"]}[Data],",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Dimension_Payment Method\",{\"Lineage Key\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact Transaction",
+        "columns": [
+          {
+            "name": "Transaction Key",
+            "dataType": "int64",
+            "sourceColumn": "Transaction Key"
+          },
+          {
+            "name": "Date Key",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "Date Key"
+          },
+          {
+            "name": "Supplier Key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Supplier Key"
+          },
+          {
+            "name": "Transaction Type Key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Transaction Type Key"
+          },
+          {
+            "name": "Payment Method Key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Payment Method Key"
+          },
+          {
+            "name": "Transaction Total",
+            "dataType": "double",
+            "sourceColumn": "Total Including Tax"
+          },
+          {
+            "name": "Is Finalized",
+            "dataType": "boolean",
+            "sourceColumn": "Is Finalized"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/(local);WideWorldImportersDW\",",
+                "    Fact_Transaction = Source{[Schema=\"Fact\",Item=\"Transaction\"]}[Data],",
+                "    #\"Removed Columns\" = Table.RemoveColumns(Fact_Transaction,{\"Customer Key\", \"Bill To Customer Key\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sum of Transaction Total",
+            "expression": "SUM([Transaction Total])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Transaction Total Unknown PM",
+            "expression": "SUMX(FILTER('Fact Transaction',RELATED('Dimension Payment Method'[Payment Method])=\"Unknown\"),'Fact Transaction'[Transaction Total])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Transaction Total Not Unknown PM",
+            "expression": "SUMX(FILTER('Fact Transaction',RELATED('Dimension Payment Method'[Payment Method])<>\"Unknown\"),'Fact Transaction'[Transaction Total])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "kpi": {
+              "targetExpression": "'Fact Transaction'[Transaction Total Unknown PM]",
+              "targetFormatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='Fact Transaction'[Transaction Total Not Unknown PM]/'Fact Transaction'[_Transaction Total Not Unknown PM Goal] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.5,-1,",
+                "\t                If(x<0.85,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "50"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "85"
+                }
+              ]
+            },
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Dimension Date",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "Day Number",
+            "dataType": "int64",
+            "sourceColumn": "Day Number"
+          },
+          {
+            "name": "Day",
+            "dataType": "string",
+            "sourceColumn": "Day"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "Month"
+          },
+          {
+            "name": "Short Month",
+            "dataType": "string",
+            "sourceColumn": "Short Month"
+          },
+          {
+            "name": "Calendar Month Number",
+            "dataType": "int64",
+            "sourceColumn": "Calendar Month Number"
+          },
+          {
+            "name": "Calendar Month Label",
+            "dataType": "string",
+            "sourceColumn": "Calendar Month Label"
+          },
+          {
+            "name": "Calendar Year",
+            "dataType": "int64",
+            "sourceColumn": "Calendar Year"
+          },
+          {
+            "name": "Calendar Year Label",
+            "dataType": "string",
+            "sourceColumn": "Calendar Year Label"
+          },
+          {
+            "name": "Fiscal Month Number",
+            "dataType": "int64",
+            "sourceColumn": "Fiscal Month Number"
+          },
+          {
+            "name": "Fiscal Month Label",
+            "dataType": "string",
+            "sourceColumn": "Fiscal Month Label"
+          },
+          {
+            "name": "Fiscal Year",
+            "dataType": "int64",
+            "sourceColumn": "Fiscal Year"
+          },
+          {
+            "name": "Fiscal Year Label",
+            "dataType": "string",
+            "sourceColumn": "Fiscal Year Label"
+          },
+          {
+            "name": "ISO Week Number",
+            "dataType": "int64",
+            "sourceColumn": "ISO Week Number"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/(local);WideWorldImportersDW\",",
+                "    Dimension_Date = Source{[Schema=\"Dimension\",Item=\"Date\"]}[Data]",
+                "in",
+                "    Dimension_Date"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dimension Supplier",
+        "columns": [
+          {
+            "name": "Supplier Key",
+            "dataType": "int64",
+            "sourceColumn": "Supplier Key"
+          },
+          {
+            "name": "WWI Supplier ID",
+            "dataType": "int64",
+            "sourceColumn": "WWI Supplier ID"
+          },
+          {
+            "name": "Supplier",
+            "dataType": "string",
+            "sourceColumn": "Supplier"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category"
+          },
+          {
+            "name": "Primary Contact",
+            "dataType": "string",
+            "sourceColumn": "Primary Contact"
+          },
+          {
+            "name": "Supplier Reference",
+            "dataType": "string",
+            "sourceColumn": "Supplier Reference"
+          },
+          {
+            "name": "Payment Days",
+            "dataType": "int64",
+            "sourceColumn": "Payment Days"
+          },
+          {
+            "name": "Postal Code",
+            "dataType": "string",
+            "sourceColumn": "Postal Code"
+          },
+          {
+            "name": "Valid From",
+            "dataType": "dateTime",
+            "sourceColumn": "Valid From"
+          },
+          {
+            "name": "Valid To",
+            "dataType": "dateTime",
+            "sourceColumn": "Valid To"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/(local);WideWorldImportersDW\",",
+                "    Dimension_Supplier = Source{[Schema=\"Dimension\",Item=\"Supplier\"]}[Data],",
+                "    #\"Removed Columns\" = Table.RemoveColumns(Dimension_Supplier,{\"Lineage Key\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "f5387c2a-6428-43cc-b631-2f54eb738e55",
+        "fromTable": "Fact Transaction",
+        "fromColumn": "Date Key",
+        "toTable": "Dimension Date",
+        "toColumn": "Date"
+      },
+      {
+        "name": "791931ee-942e-44ef-8a64-05ab88fc2269",
+        "fromTable": "Fact Transaction",
+        "fromColumn": "Payment Method Key",
+        "toTable": "Dimension Payment Method",
+        "toColumn": "Payment Method Key"
+      },
+      {
+        "name": "1203e830-c65f-4afc-a073-454ce7159ac5",
+        "fromTable": "Fact Transaction",
+        "fromColumn": "Supplier Key",
+        "toTable": "Dimension Supplier",
+        "toColumn": "Supplier Key"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
