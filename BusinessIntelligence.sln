@@ -23,6 +23,8 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProfitabilityOverTimeReport
 EndProject
 Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "PaymentMethodTabular", "PaymentMethodTabular\PaymentMethodTabular.smproj", "{8CE414BB-95B2-4C99-9E03-51BA72086E22}"
 EndProject
+Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "ProfitabilityOverTimeTabular", "ProfitabilityOverTimeTabular\ProfitabilityOverTimeTabular.smproj", "{F7712309-A55C-4DEE-B122-03477EB0FBE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -151,6 +153,18 @@ Global
 		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Release|x86.ActiveCfg = Development|x86
 		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Release|x86.Build.0 = Development|x86
 		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Release|x86.Deploy.0 = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Debug|x86.ActiveCfg = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Debug|x86.Build.0 = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Debug|x86.Deploy.0 = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.DebugLocal|x86.ActiveCfg = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.DebugLocal|x86.Build.0 = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.DebugLocal|x86.Deploy.0 = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Development|x86.ActiveCfg = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Development|x86.Build.0 = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Development|x86.Deploy.0 = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Release|x86.ActiveCfg = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Release|x86.Build.0 = Development|x86
+		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Release|x86.Deploy.0 = Development|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
