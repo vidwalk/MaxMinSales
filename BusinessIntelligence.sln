@@ -25,6 +25,8 @@ Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "PaymentMethodTabular", "Pay
 EndProject
 Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "ProfitabilityOverTimeTabular", "ProfitabilityOverTimeTabular\ProfitabilityOverTimeTabular.smproj", "{F7712309-A55C-4DEE-B122-03477EB0FBE8}"
 EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "PaymentMethodIS", "PaymentMethodIS\PaymentMethodIS.dtproj", "{3CAB021E-5129-433C-8489-BE2967DF6E39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -165,6 +167,14 @@ Global
 		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Release|x86.ActiveCfg = Development|x86
 		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Release|x86.Build.0 = Development|x86
 		{F7712309-A55C-4DEE-B122-03477EB0FBE8}.Release|x86.Deploy.0 = Development|x86
+		{3CAB021E-5129-433C-8489-BE2967DF6E39}.Debug|x86.ActiveCfg = Development
+		{3CAB021E-5129-433C-8489-BE2967DF6E39}.Debug|x86.Build.0 = Development
+		{3CAB021E-5129-433C-8489-BE2967DF6E39}.DebugLocal|x86.ActiveCfg = Development
+		{3CAB021E-5129-433C-8489-BE2967DF6E39}.DebugLocal|x86.Build.0 = Development
+		{3CAB021E-5129-433C-8489-BE2967DF6E39}.Development|x86.ActiveCfg = Development
+		{3CAB021E-5129-433C-8489-BE2967DF6E39}.Development|x86.Build.0 = Development
+		{3CAB021E-5129-433C-8489-BE2967DF6E39}.Release|x86.ActiveCfg = Development
+		{3CAB021E-5129-433C-8489-BE2967DF6E39}.Release|x86.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

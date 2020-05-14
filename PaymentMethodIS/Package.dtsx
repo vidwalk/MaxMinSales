@@ -1,0 +1,2723 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/14/2020 8:59:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-LR3NNCO"
+  DTS:CreatorName="DESKTOP-LR3NNCO\Claudiu"
+  DTS:DTSID="{CAA04E8B-D39A-4967-8A03-F456CF788697}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.68"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{57F8BA3A-D532-4015-B3DD-E90448696475}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).PaymentMethodDataMart]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B4B3EFB8-1C58-4D38-A697-9014C7C027AF}"
+      DTS:ObjectName="(local).PaymentMethodDataMart">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=PaymentMethodDataMart;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).WideWorldImportersDW]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{86F5DE4C-5029-4EE4-AD36-1EB66041AE62}"
+      DTS:ObjectName="(local).WideWorldImportersDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=WideWorldImportersDW;Integrated Security=True;Application Name=SSIS-Package-{86F5DE4C-5029-4EE4-AD36-1EB66041AE62}(local).WideWorldImportersDW;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Date Dim"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FFF3461F-4840-4B31-936B-6BA352C2ECBA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Date Dim"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Date Dim\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Dimension"."Date"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Date Dim\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).WideWorldImportersDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).WideWorldImportersDW]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Day Number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Day Number]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Day Number]"
+                      name="Day Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Day]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Day]"
+                      length="10"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Month]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Month]"
+                      length="10"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Short Month]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Short Month]"
+                      length="3"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Short Month]"
+                      name="Short Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Month Number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Calendar Month Number]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Month Number]"
+                      name="Calendar Month Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Month Label]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Calendar Month Label]"
+                      length="20"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Month Label]"
+                      name="Calendar Month Label"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Calendar Year]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Year]"
+                      name="Calendar Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Year Label]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Calendar Year Label]"
+                      length="10"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Year Label]"
+                      name="Calendar Year Label"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Month Number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fiscal Month Number]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Month Number]"
+                      name="Fiscal Month Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Month Label]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fiscal Month Label]"
+                      length="20"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Month Label]"
+                      name="Fiscal Month Label"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fiscal Year]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Year]"
+                      name="Fiscal Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Year Label]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fiscal Year Label]"
+                      length="10"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Year Label]"
+                      name="Fiscal Year Label"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[ISO Week Number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ISO Week Number]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[ISO Week Number]"
+                      name="ISO Week Number"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Date]"
+                      dataType="dbDate"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Day Number]"
+                      dataType="i4"
+                      name="Day Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Day]"
+                      dataType="wstr"
+                      length="10"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Month]"
+                      dataType="wstr"
+                      length="10"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Short Month]"
+                      dataType="wstr"
+                      length="3"
+                      name="Short Month" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Calendar Month Number]"
+                      dataType="i4"
+                      name="Calendar Month Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Calendar Month Label]"
+                      dataType="wstr"
+                      length="20"
+                      name="Calendar Month Label" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Calendar Year]"
+                      dataType="i4"
+                      name="Calendar Year" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Calendar Year Label]"
+                      dataType="wstr"
+                      length="10"
+                      name="Calendar Year Label" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fiscal Month Number]"
+                      dataType="i4"
+                      name="Fiscal Month Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fiscal Month Label]"
+                      dataType="wstr"
+                      length="20"
+                      name="Fiscal Month Label" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fiscal Year]"
+                      dataType="i4"
+                      name="Fiscal Year" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Fiscal Year Label]"
+                      dataType="wstr"
+                      length="10"
+                      name="Fiscal Year Label" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ISO Week Number]"
+                      dataType="i4"
+                      name="ISO Week Number" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Day Number]"
+                      dataType="i4"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Day Number]"
+                      name="Day Number" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Day]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Month]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Short Month]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Short Month]"
+                      name="Short Month" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Calendar Month Number]"
+                      dataType="i4"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Calendar Month Number]"
+                      name="Calendar Month Number" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Calendar Month Label]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Calendar Month Label]"
+                      name="Calendar Month Label" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Calendar Year]"
+                      dataType="i4"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Calendar Year]"
+                      name="Calendar Year" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Calendar Year Label]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Calendar Year Label]"
+                      name="Calendar Year Label" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fiscal Month Number]"
+                      dataType="i4"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fiscal Month Number]"
+                      name="Fiscal Month Number" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fiscal Month Label]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fiscal Month Label]"
+                      name="Fiscal Month Label" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fiscal Year]"
+                      dataType="i4"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fiscal Year]"
+                      name="Fiscal Year" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fiscal Year Label]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Fiscal Year Label]"
+                      name="Fiscal Year Label" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ISO Week Number]"
+                      dataType="i4"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ISO Week Number]"
+                      name="ISO Week Number" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Date Dim\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Dimension].[Date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Date Dim\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).PaymentMethodDataMart]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).PaymentMethodDataMart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Day Number]"
+                      cachedDataType="i4"
+                      cachedName="Day Number"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Day Number]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Day Number]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Day]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Day"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Day]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Month]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Month"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Short Month]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Short Month"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Short Month]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Short Month]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Calendar Month Number]"
+                      cachedDataType="i4"
+                      cachedName="Calendar Month Number"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Month Number]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Month Number]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Calendar Month Label]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Calendar Month Label"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Month Label]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Month Label]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Calendar Year]"
+                      cachedDataType="i4"
+                      cachedName="Calendar Year"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Year]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Year]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Calendar Year Label]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Calendar Year Label"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Year Label]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Calendar Year Label]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fiscal Month Number]"
+                      cachedDataType="i4"
+                      cachedName="Fiscal Month Number"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Month Number]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Month Number]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fiscal Month Label]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Fiscal Month Label"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Month Label]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Month Label]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fiscal Year]"
+                      cachedDataType="i4"
+                      cachedName="Fiscal Year"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Year]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fiscal Year Label]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Fiscal Year Label"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year Label]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Fiscal Year Label]" />
+                    <inputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ISO Week Number]"
+                      cachedDataType="i4"
+                      cachedName="ISO Week Number"
+                      externalMetadataColumnId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISO Week Number]"
+                      lineageId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[ISO Week Number]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="dbDate"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Day Number]"
+                      dataType="i4"
+                      name="Day Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      dataType="wstr"
+                      length="10"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      dataType="wstr"
+                      length="10"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Short Month]"
+                      dataType="wstr"
+                      length="3"
+                      name="Short Month" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Month Number]"
+                      dataType="i4"
+                      name="Calendar Month Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Month Label]"
+                      dataType="wstr"
+                      length="20"
+                      name="Calendar Month Label" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Year]"
+                      dataType="i4"
+                      name="Calendar Year" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Year Label]"
+                      dataType="wstr"
+                      length="10"
+                      name="Calendar Year Label" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Month Number]"
+                      dataType="i4"
+                      name="Fiscal Month Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Month Label]"
+                      dataType="wstr"
+                      length="20"
+                      name="Fiscal Month Label" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year]"
+                      dataType="i4"
+                      name="Fiscal Year" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year Label]"
+                      dataType="wstr"
+                      length="10"
+                      name="Fiscal Year Label" />
+                    <externalMetadataColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISO Week Number]"
+                      dataType="i4"
+                      name="ISO Week Number" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Date Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Date Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Date Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Date Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Date Dim.Paths[ADO NET Source Output]"
+              endId="Package\Load Date Dim\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Load Date Dim\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Payment Method Dim"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{89A07189-FE30-4775-BB0D-95EB7EC5884D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Payment Method Dim"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Payment Method Dim\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Dimension"."Payment Method"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Payment Method Dim\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).WideWorldImportersDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).WideWorldImportersDW]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Method Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Payment Method Key]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Method Key]"
+                      name="Payment Method Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Payment Method ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Payment Method ID]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Payment Method ID]"
+                      name="WWI Payment Method ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Method]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Payment Method]"
+                      length="50"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Method]"
+                      name="Payment Method"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid From]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valid From]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid From]"
+                      name="Valid From"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid To]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valid To]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid To]"
+                      name="Valid To"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Lineage Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Lineage Key]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Lineage Key]"
+                      name="Lineage Key"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Payment Method Key]"
+                      dataType="i4"
+                      name="Payment Method Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Payment Method ID]"
+                      dataType="i4"
+                      name="WWI Payment Method ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Payment Method]"
+                      dataType="wstr"
+                      length="50"
+                      name="Payment Method" />
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valid From]"
+                      dataType="dbTimeStamp2"
+                      name="Valid From"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valid To]"
+                      dataType="dbTimeStamp2"
+                      name="Valid To"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Lineage Key]"
+                      dataType="i4"
+                      name="Lineage Key" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Payment Method Key]"
+                      dataType="i4"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Payment Method Key]"
+                      name="Payment Method Key" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Payment Method ID]"
+                      dataType="i4"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Payment Method ID]"
+                      name="WWI Payment Method ID" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Payment Method]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Payment Method]"
+                      name="Payment Method" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valid From]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valid From]"
+                      name="Valid From"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valid To]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valid To]"
+                      name="Valid To"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Lineage Key]"
+                      dataType="i4"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Lineage Key]"
+                      name="Lineage Key" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Payment Method Dim\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Dimension].[Payment Method]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Payment Method Dim\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).PaymentMethodDataMart]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).PaymentMethodDataMart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WWI Payment Method ID]"
+                      cachedDataType="i4"
+                      cachedName="WWI Payment Method ID"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Payment Method ID]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Payment Method ID]" />
+                    <inputColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Payment Method]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Payment Method"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Payment Method]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Method]" />
+                    <inputColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Valid From]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="Valid From"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid From]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid From]" />
+                    <inputColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Valid To]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="Valid To"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid To]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid To]" />
+                    <inputColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Lineage Key]"
+                      cachedDataType="i4"
+                      cachedName="Lineage Key"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lineage Key]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Lineage Key]" />
+                    <inputColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Payment Method Key]"
+                      cachedDataType="i4"
+                      cachedName="Payment Method Key"
+                      externalMetadataColumnId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Payment Method Key]"
+                      lineageId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Method Key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Payment Method Key]"
+                      dataType="i4"
+                      name="Payment Method Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Payment Method ID]"
+                      dataType="i4"
+                      name="WWI Payment Method ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Payment Method]"
+                      dataType="wstr"
+                      length="50"
+                      name="Payment Method" />
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid From]"
+                      dataType="dbTimeStamp2"
+                      name="Valid From"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid To]"
+                      dataType="dbTimeStamp2"
+                      name="Valid To"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lineage Key]"
+                      dataType="i4"
+                      name="Lineage Key" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Payment Method Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Payment Method Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Payment Method Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Payment Method Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Payment Method Dim.Paths[ADO NET Source Output]"
+              endId="Package\Load Payment Method Dim\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Load Payment Method Dim\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Supplier Dim"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3E7F4C3C-FEEE-4033-B8BD-F9D9418DE2BA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Supplier Dim"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Supplier Dim\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Dimension"."Supplier"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Supplier Dim\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).WideWorldImportersDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).WideWorldImportersDW]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Supplier Key]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Key]"
+                      name="Supplier Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Supplier ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Supplier ID]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Supplier ID]"
+                      name="WWI Supplier ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Supplier]"
+                      length="100"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier]"
+                      name="Supplier"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Category]"
+                      length="50"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Category]"
+                      name="Category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Primary Contact]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Primary Contact]"
+                      length="50"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Primary Contact]"
+                      name="Primary Contact"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Reference]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Supplier Reference]"
+                      length="20"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Reference]"
+                      name="Supplier Reference"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Days]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Payment Days]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Days]"
+                      name="Payment Days"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Postal Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Postal Code]"
+                      length="10"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Postal Code]"
+                      name="Postal Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid From]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valid From]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid From]"
+                      name="Valid From"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid To]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valid To]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid To]"
+                      name="Valid To"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Lineage Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Lineage Key]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Lineage Key]"
+                      name="Lineage Key"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Supplier Key]"
+                      dataType="i4"
+                      name="Supplier Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Supplier ID]"
+                      dataType="i4"
+                      name="WWI Supplier ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Supplier]"
+                      dataType="wstr"
+                      length="100"
+                      name="Supplier" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Category]"
+                      dataType="wstr"
+                      length="50"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Primary Contact]"
+                      dataType="wstr"
+                      length="50"
+                      name="Primary Contact" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Supplier Reference]"
+                      dataType="wstr"
+                      length="20"
+                      name="Supplier Reference" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Payment Days]"
+                      dataType="i4"
+                      name="Payment Days" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Postal Code]"
+                      dataType="wstr"
+                      length="10"
+                      name="Postal Code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valid From]"
+                      dataType="dbTimeStamp2"
+                      name="Valid From"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Valid To]"
+                      dataType="dbTimeStamp2"
+                      name="Valid To"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Lineage Key]"
+                      dataType="i4"
+                      name="Lineage Key" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Supplier Key]"
+                      dataType="i4"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Supplier Key]"
+                      name="Supplier Key" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Supplier ID]"
+                      dataType="i4"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Supplier ID]"
+                      name="WWI Supplier ID" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Supplier]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Supplier]"
+                      name="Supplier" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Category]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Category]"
+                      name="Category" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Primary Contact]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Primary Contact]"
+                      name="Primary Contact" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Supplier Reference]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Supplier Reference]"
+                      name="Supplier Reference" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Payment Days]"
+                      dataType="i4"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Payment Days]"
+                      name="Payment Days" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Postal Code]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Postal Code]"
+                      name="Postal Code" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valid From]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valid From]"
+                      name="Valid From"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valid To]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Valid To]"
+                      name="Valid To"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Lineage Key]"
+                      dataType="i4"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Lineage Key]"
+                      name="Lineage Key" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Supplier Dim\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Dimension].[Supplier]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Supplier Dim\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).PaymentMethodDataMart]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).PaymentMethodDataMart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Supplier Key]"
+                      cachedDataType="i4"
+                      cachedName="Supplier Key"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Supplier Key]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Key]" />
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WWI Supplier ID]"
+                      cachedDataType="i4"
+                      cachedName="WWI Supplier ID"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Supplier ID]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Supplier ID]" />
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Supplier]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Supplier"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Supplier]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier]" />
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Category]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Category"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Category]" />
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Primary Contact]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Primary Contact"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Primary Contact]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Primary Contact]" />
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Supplier Reference]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Supplier Reference"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Supplier Reference]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Reference]" />
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Payment Days]"
+                      cachedDataType="i4"
+                      cachedName="Payment Days"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Payment Days]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Days]" />
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Postal Code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Postal Code"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Postal Code]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Postal Code]" />
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Valid From]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="Valid From"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid From]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid From]" />
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Valid To]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="Valid To"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid To]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Valid To]" />
+                    <inputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Lineage Key]"
+                      cachedDataType="i4"
+                      cachedName="Lineage Key"
+                      externalMetadataColumnId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lineage Key]"
+                      lineageId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output].Columns[Lineage Key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Supplier Key]"
+                      dataType="i4"
+                      name="Supplier Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Supplier ID]"
+                      dataType="i4"
+                      name="WWI Supplier ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Supplier]"
+                      dataType="wstr"
+                      length="100"
+                      name="Supplier" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category]"
+                      dataType="wstr"
+                      length="50"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Primary Contact]"
+                      dataType="wstr"
+                      length="50"
+                      name="Primary Contact" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Supplier Reference]"
+                      dataType="wstr"
+                      length="20"
+                      name="Supplier Reference" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Payment Days]"
+                      dataType="i4"
+                      name="Payment Days" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Postal Code]"
+                      dataType="wstr"
+                      length="10"
+                      name="Postal Code" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid From]"
+                      dataType="dbTimeStamp2"
+                      name="Valid From"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid To]"
+                      dataType="dbTimeStamp2"
+                      name="Valid To"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lineage Key]"
+                      dataType="i4"
+                      name="Lineage Key" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Supplier Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Supplier Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Supplier Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Supplier Dim\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Supplier Dim.Paths[ADO NET Source Output]"
+              endId="Package\Load Supplier Dim\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Load Supplier Dim\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Transaction"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3C6F4C13-D643-454D-B77F-B62010491A22}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Transaction"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Transaction\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Fact"."Transaction"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Transaction\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).WideWorldImportersDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).WideWorldImportersDW]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Transaction Key]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Transaction Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Transaction Key]"
+                      name="Transaction Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Date Key]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Date Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Date Key]"
+                      name="Date Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Customer Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Customer Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Customer Key]"
+                      name="Customer Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Bill To Customer Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Bill To Customer Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Bill To Customer Key]"
+                      name="Bill To Customer Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Supplier Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Key]"
+                      name="Supplier Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Transaction Type Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Transaction Type Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Transaction Type Key]"
+                      name="Transaction Type Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Method Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Payment Method Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Method Key]"
+                      name="Payment Method Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Customer Transaction ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Customer Transaction ID]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Customer Transaction ID]"
+                      name="WWI Customer Transaction ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Supplier Transaction ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Supplier Transaction ID]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Supplier Transaction ID]"
+                      name="WWI Supplier Transaction ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Invoice ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Invoice ID]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Invoice ID]"
+                      name="WWI Invoice ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Purchase Order ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Purchase Order ID]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Purchase Order ID]"
+                      name="WWI Purchase Order ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Invoice Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Supplier Invoice Number]"
+                      length="20"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Invoice Number]"
+                      name="Supplier Invoice Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Excluding Tax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Total Excluding Tax]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Excluding Tax]"
+                      name="Total Excluding Tax"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tax Amount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Tax Amount]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tax Amount]"
+                      name="Tax Amount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Including Tax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Total Including Tax]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Including Tax]"
+                      name="Total Including Tax"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Outstanding Balance]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Outstanding Balance]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Outstanding Balance]"
+                      name="Outstanding Balance"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Is Finalized]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Is Finalized]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Is Finalized]"
+                      name="Is Finalized"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Lineage Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Lineage Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Lineage Key]"
+                      name="Lineage Key"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Transaction Key]"
+                      dataType="i8"
+                      name="Transaction Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Date Key]"
+                      dataType="dbDate"
+                      name="Date Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Customer Key]"
+                      dataType="i4"
+                      name="Customer Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Bill To Customer Key]"
+                      dataType="i4"
+                      name="Bill To Customer Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Supplier Key]"
+                      dataType="i4"
+                      name="Supplier Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Transaction Type Key]"
+                      dataType="i4"
+                      name="Transaction Type Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Payment Method Key]"
+                      dataType="i4"
+                      name="Payment Method Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Customer Transaction ID]"
+                      dataType="i4"
+                      name="WWI Customer Transaction ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Supplier Transaction ID]"
+                      dataType="i4"
+                      name="WWI Supplier Transaction ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Invoice ID]"
+                      dataType="i4"
+                      name="WWI Invoice ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[WWI Purchase Order ID]"
+                      dataType="i4"
+                      name="WWI Purchase Order ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Supplier Invoice Number]"
+                      dataType="wstr"
+                      length="20"
+                      name="Supplier Invoice Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Total Excluding Tax]"
+                      dataType="numeric"
+                      name="Total Excluding Tax"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Tax Amount]"
+                      dataType="numeric"
+                      name="Tax Amount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Total Including Tax]"
+                      dataType="numeric"
+                      name="Total Including Tax"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Outstanding Balance]"
+                      dataType="numeric"
+                      name="Outstanding Balance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Is Finalized]"
+                      dataType="bool"
+                      name="Is Finalized" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Lineage Key]"
+                      dataType="i4"
+                      name="Lineage Key" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Transaction Key]"
+                      dataType="i8"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Transaction Key]"
+                      name="Transaction Key" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Date Key]"
+                      dataType="dbDate"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Date Key]"
+                      name="Date Key" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Customer Key]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Customer Key]"
+                      name="Customer Key" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Bill To Customer Key]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Bill To Customer Key]"
+                      name="Bill To Customer Key" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Supplier Key]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Supplier Key]"
+                      name="Supplier Key" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Transaction Type Key]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Transaction Type Key]"
+                      name="Transaction Type Key" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Payment Method Key]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Payment Method Key]"
+                      name="Payment Method Key" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Customer Transaction ID]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Customer Transaction ID]"
+                      name="WWI Customer Transaction ID" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Supplier Transaction ID]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Supplier Transaction ID]"
+                      name="WWI Supplier Transaction ID" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Invoice ID]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Invoice ID]"
+                      name="WWI Invoice ID" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Purchase Order ID]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[WWI Purchase Order ID]"
+                      name="WWI Purchase Order ID" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Supplier Invoice Number]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Supplier Invoice Number]"
+                      name="Supplier Invoice Number" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Total Excluding Tax]"
+                      dataType="numeric"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Total Excluding Tax]"
+                      name="Total Excluding Tax"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Tax Amount]"
+                      dataType="numeric"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Tax Amount]"
+                      name="Tax Amount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Total Including Tax]"
+                      dataType="numeric"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Total Including Tax]"
+                      name="Total Including Tax"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Outstanding Balance]"
+                      dataType="numeric"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Outstanding Balance]"
+                      name="Outstanding Balance"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Is Finalized]"
+                      dataType="bool"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Is Finalized]"
+                      name="Is Finalized" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Lineage Key]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Lineage Key]"
+                      name="Lineage Key" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Transaction\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Fact].[Transaction]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Transaction\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).PaymentMethodDataMart]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).PaymentMethodDataMart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Date Key]"
+                      cachedDataType="dbDate"
+                      cachedName="Date Key"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Date Key]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Customer Key]"
+                      cachedDataType="i4"
+                      cachedName="Customer Key"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Customer Key]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bill To Customer Key]"
+                      cachedDataType="i4"
+                      cachedName="Bill To Customer Key"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bill To Customer Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Bill To Customer Key]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Supplier Key]"
+                      cachedDataType="i4"
+                      cachedName="Supplier Key"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Supplier Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Key]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Transaction Type Key]"
+                      cachedDataType="i4"
+                      cachedName="Transaction Type Key"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Transaction Type Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Transaction Type Key]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Payment Method Key]"
+                      cachedDataType="i4"
+                      cachedName="Payment Method Key"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Payment Method Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Payment Method Key]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WWI Customer Transaction ID]"
+                      cachedDataType="i4"
+                      cachedName="WWI Customer Transaction ID"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Customer Transaction ID]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Customer Transaction ID]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WWI Supplier Transaction ID]"
+                      cachedDataType="i4"
+                      cachedName="WWI Supplier Transaction ID"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Supplier Transaction ID]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Supplier Transaction ID]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WWI Invoice ID]"
+                      cachedDataType="i4"
+                      cachedName="WWI Invoice ID"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Invoice ID]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Invoice ID]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WWI Purchase Order ID]"
+                      cachedDataType="i4"
+                      cachedName="WWI Purchase Order ID"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Purchase Order ID]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[WWI Purchase Order ID]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Supplier Invoice Number]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Supplier Invoice Number"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Supplier Invoice Number]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Supplier Invoice Number]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total Excluding Tax]"
+                      cachedDataType="numeric"
+                      cachedName="Total Excluding Tax"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total Excluding Tax]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Excluding Tax]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Tax Amount]"
+                      cachedDataType="numeric"
+                      cachedName="Tax Amount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tax Amount]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Tax Amount]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total Including Tax]"
+                      cachedDataType="numeric"
+                      cachedName="Total Including Tax"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total Including Tax]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Total Including Tax]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Outstanding Balance]"
+                      cachedDataType="numeric"
+                      cachedName="Outstanding Balance"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Outstanding Balance]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Outstanding Balance]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Is Finalized]"
+                      cachedDataType="bool"
+                      cachedName="Is Finalized"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Is Finalized]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Is Finalized]" />
+                    <inputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Lineage Key]"
+                      cachedDataType="i4"
+                      cachedName="Lineage Key"
+                      externalMetadataColumnId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lineage Key]"
+                      lineageId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output].Columns[Lineage Key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer Key]"
+                      dataType="i4"
+                      name="Customer Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bill To Customer Key]"
+                      dataType="i4"
+                      name="Bill To Customer Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Invoice ID]"
+                      dataType="i4"
+                      name="WWI Invoice ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total Excluding Tax]"
+                      dataType="numeric"
+                      name="Total Excluding Tax"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tax Amount]"
+                      dataType="numeric"
+                      name="Tax Amount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total Including Tax]"
+                      dataType="numeric"
+                      name="Total Including Tax"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lineage Key]"
+                      dataType="i4"
+                      name="Lineage Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Transaction Key]"
+                      dataType="i8"
+                      name="Transaction Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date Key]"
+                      dataType="dbDate"
+                      name="Date Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Supplier Key]"
+                      dataType="i4"
+                      name="Supplier Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Transaction Type Key]"
+                      dataType="i4"
+                      name="Transaction Type Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Payment Method Key]"
+                      dataType="i4"
+                      name="Payment Method Key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Customer Transaction ID]"
+                      dataType="i4"
+                      name="WWI Customer Transaction ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Supplier Transaction ID]"
+                      dataType="i4"
+                      name="WWI Supplier Transaction ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Purchase Order ID]"
+                      dataType="i4"
+                      name="WWI Purchase Order ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Supplier Invoice Number]"
+                      dataType="wstr"
+                      length="20"
+                      name="Supplier Invoice Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Outstanding Balance]"
+                      dataType="numeric"
+                      name="Outstanding Balance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Is Finalized]"
+                      dataType="bool"
+                      name="Is Finalized" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Transaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Transaction.Paths[ADO NET Source Output]"
+              endId="Package\Load Transaction\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Load Transaction\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{80F3151E-8AE1-43B7-868E-AB1B870065C0}"
+      DTS:From="Package\Load Supplier Dim"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Transaction" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0375C30D-7B38-460C-98BB-EA9D92002243}"
+      DTS:From="Package\Load Payment Method Dim"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load Date Dim" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{EAF8D157-C025-4E10-AF11-D8EE617C41E1}"
+      DTS:From="Package\Load Date Dim"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Load Supplier Dim" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Load Transaction"
+          TopLeft="30,353" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Load Payment Method Dim"
+          TopLeft="13,41" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Load Date Dim"
+          TopLeft="42,156" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="116.25,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Load Supplier Dim"
+          TopLeft="32,244" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="115.5,198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="112.25,286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Transaction">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load Transaction\ADO NET Source"
+          TopLeft="89.4102564102564,39.6153846153846" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load Transaction\OLE DB Destination"
+          TopLeft="81.5384615384615,163.846153846154" />
+        <EdgeLayout
+          Id="Package\Load Transaction.Paths[ADO NET Source Output]"
+          TopLeft="167.724358974359,81.6153846153846">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82.2307692307692"
+              Start="0,0"
+              End="0,74.7307692307692">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.7307692307692" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Transaction\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Transaction\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Payment Method Dim">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load Payment Method Dim\ADO NET Source"
+          TopLeft="98,51" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load Payment Method Dim\OLE DB Destination"
+          TopLeft="87,212" />
+        <EdgeLayout
+          Id="Package\Load Payment Method Dim.Paths[ADO NET Source Output]"
+          TopLeft="174.75,93">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,119"
+              Start="0,0"
+              End="0,111.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,111.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Load Date Dim">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load Date Dim\ADO NET Source"
+          TopLeft="121,140" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load Date Dim\OLE DB Destination"
+          TopLeft="122,287" />
+        <EdgeLayout
+          Id="Package\Load Date Dim.Paths[ADO NET Source Output]"
+          TopLeft="203.75,182">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,105"
+              Start="0,0"
+              End="0,97.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,97.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Load Supplier Dim">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load Supplier Dim\ADO NET Source"
+          TopLeft="94,57" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load Supplier Dim\OLE DB Destination"
+          TopLeft="89,199" />
+        <EdgeLayout
+          Id="Package\Load Supplier Dim.Paths[ADO NET Source Output]"
+          TopLeft="173.75,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,100"
+              Start="0,0"
+              End="0,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Payment Method Dim\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Payment Method Dim\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Date Dim\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Date Dim\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Supplier Dim\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Supplier Dim\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
