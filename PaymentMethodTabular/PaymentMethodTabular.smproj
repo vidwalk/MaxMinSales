@@ -24,7 +24,7 @@
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == '' ">
-    <DeploymentServerName>DESKTOP-LR3NNCO\MSSQLSERVERTM</DeploymentServerName>
+    <DeploymentServerName>DESKTOP-M17BHFK\MSSQLSERVERTM2</DeploymentServerName>
     <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
     <DeploymentServerDatabase>PaymentMethodTabular</DeploymentServerDatabase>

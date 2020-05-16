@@ -2,20 +2,20 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Development</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{f7712309-a55c-4dee-b122-03477eb0fbe8}</ProjectGuid>
+    <ProjectGuid>{b63a5af1-cb52-4d29-a7c4-89cac3aa43ee}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>MyRootNamespace</RootNamespace>
     <AssemblyName>MyAssemblyName</AssemblyName>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <OutputPath>bin\</OutputPath>
-    <Name>ProfitabilityOverTimeTabular</Name>
+    <Name>OrderForecastTabular</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Development' ">
     <OutputPath>bin\</OutputPath>
-    <DeploymentServerName>DESKTOP-LR3NNCO\MSSQLSERVERTM</DeploymentServerName>
+    <DeploymentServerName>DESKTOP-M17BHFK\MSSQLSERVERTM2</DeploymentServerName>
     <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
-    <DeploymentServerDatabase>ProfitabilityOverTimeTabular</DeploymentServerDatabase>
+    <DeploymentServerDatabase>OrderForecastTabular</DeploymentServerDatabase>
     <DeploymentServerCubeName>Model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
@@ -27,7 +27,7 @@
     <DeploymentServerName>DESKTOP-M17BHFK\MSSQLSERVERTM2</DeploymentServerName>
     <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
-    <DeploymentServerDatabase>ProfitabilityOverTimeTabular</DeploymentServerDatabase>
+    <DeploymentServerDatabase>OrderForecastTabular</DeploymentServerDatabase>
     <DeploymentServerCubeName>Model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
