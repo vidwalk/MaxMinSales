@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-IETMOQ1.WideWorldImportersDW"
+  DTS:DTSID="{1E88EFA8-3F74-4A1C-A6F3-6E8368E4087F}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=DESKTOP-IETMOQ1;Initial Catalog=WideWorldImportersDW;Integrated Security=True;Application Name=SSIS-CustomerProfileIntegration-{1E88EFA8-3F74-4A1C-A6F3-6E8368E4087F}DESKTOP-IETMOQ1.WideWorldImportersDW;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
