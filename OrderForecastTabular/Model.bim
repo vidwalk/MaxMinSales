@@ -233,121 +233,6 @@
         ]
       },
       {
-        "name": "Date",
-        "columns": [
-          {
-            "name": "Date",
-            "dataType": "dateTime",
-            "sourceColumn": "Date",
-            "formatString": "General Date",
-            "sourceProviderType": "DBDate"
-          },
-          {
-            "name": "Day Number",
-            "dataType": "int64",
-            "sourceColumn": "Day Number",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Day",
-            "dataType": "string",
-            "sourceColumn": "Day",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Month",
-            "dataType": "string",
-            "sourceColumn": "Month",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Short Month",
-            "dataType": "string",
-            "sourceColumn": "Short Month",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Calendar Month Number",
-            "dataType": "int64",
-            "sourceColumn": "Calendar Month Number",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Calendar Month Label",
-            "dataType": "string",
-            "sourceColumn": "Calendar Month Label",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Calendar Year",
-            "dataType": "int64",
-            "sourceColumn": "Calendar Year",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Calendar Year Label",
-            "dataType": "string",
-            "sourceColumn": "Calendar Year Label",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Fiscal Month Number",
-            "dataType": "int64",
-            "sourceColumn": "Fiscal Month Number",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Fiscal Month Label",
-            "dataType": "string",
-            "sourceColumn": "Fiscal Month Label",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Fiscal Year",
-            "dataType": "int64",
-            "sourceColumn": "Fiscal Year",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Fiscal Year Label",
-            "dataType": "string",
-            "sourceColumn": "Fiscal Year Label",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "ISO Week Number",
-            "dataType": "int64",
-            "sourceColumn": "ISO Week Number",
-            "sourceProviderType": "Integer"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Date",
-            "dataView": "full",
-            "source": {
-              "type": "query",
-              "query": " SELECT [Dimension].[Date].* FROM [Dimension].[Date] ",
-              "dataSource": "SqlServer DESKTOP-M17BHFKMSSQLSERVER19 WideWorldImportersDW"
-            }
-          }
-        ],
-        "annotations": [
-          {
-            "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [Dimension].[Date].* FROM [Dimension].[Date] "
-          },
-          {
-            "name": "_TM_ExtProp_DbTableName",
-            "value": "Date"
-          },
-          {
-            "name": "_TM_ExtProp_DbSchemaName",
-            "value": "Dimension"
-          }
-        ]
-      },
-      {
         "name": "Employee",
         "columns": [
           {
@@ -581,30 +466,35 @@
           {
             "name": "Order Key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Order Key",
             "sourceProviderType": "BigInt"
           },
           {
             "name": "City Key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "City Key",
             "sourceProviderType": "Integer"
           },
           {
             "name": "Customer Key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Customer Key",
             "sourceProviderType": "Integer"
           },
           {
             "name": "Stock Item Key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Stock Item Key",
             "sourceProviderType": "Integer"
           },
           {
             "name": "Order Date Key",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "Order Date Key",
             "formatString": "General Date",
             "sourceProviderType": "DBDate"
@@ -612,6 +502,7 @@
           {
             "name": "Picked Date Key",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "Picked Date Key",
             "formatString": "General Date",
             "sourceProviderType": "DBDate"
@@ -619,12 +510,14 @@
           {
             "name": "Salesperson Key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Salesperson Key",
             "sourceProviderType": "Integer"
           },
           {
             "name": "Picker Key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Picker Key",
             "sourceProviderType": "Integer"
           },
@@ -632,12 +525,6 @@
             "name": "WWI Order ID",
             "dataType": "int64",
             "sourceColumn": "WWI Order ID",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "WWI Backorder ID",
-            "dataType": "int64",
-            "sourceColumn": "WWI Backorder ID",
             "sourceProviderType": "Integer"
           },
           {
@@ -687,12 +574,6 @@
             "dataType": "double",
             "sourceColumn": "Total Including Tax",
             "sourceProviderType": "Numeric"
-          },
-          {
-            "name": "Lineage Key",
-            "dataType": "int64",
-            "sourceColumn": "Lineage Key",
-            "sourceProviderType": "Integer"
           },
           {
             "type": "calculated",
@@ -834,6 +715,65 @@
             "name": "Sum of Quantity Last Year",
             "expression": "CALCULATE([Sum of Quantity], SAMEPERIODLASTYEAR('Time'[Date]))",
             "formatString": "#,0"
+          },
+          {
+            "name": "Order Count",
+            "expression": "COUNT('Order'[Order Key])",
+            "formatString": "#,0",
+            "kpi": {
+              "targetExpression": "'Order'[Order Count LY]",
+              "targetFormatString": "#,0",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='Order'[Order Count]/'Order'[_Order Count Goal] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.886,-1,",
+                "\t                If(x<0.965,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "88.6"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "96.5"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Order Count YTD",
+            "expression": "CALCULATE( [Order Count], DATESYTD('Time'[Date]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Order Count LY",
+            "expression": "CALCULATE([Order Count], SAMEPERIODLASTYEAR('Time'[Date]))",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
@@ -919,7 +859,7 @@
             "name": "CalculatedTable 1",
             "source": {
               "type": "calculated",
-              "expression": "CALENDAR(DATE(2013, 1, 1) , DATE(2015, 12, 31) )"
+              "expression": "CALENDAR(DATE(2013, 1, 1) , DATE(2016, 12, 31) )"
             }
           }
         ],
@@ -948,21 +888,6 @@
       }
     ],
     "relationships": [
-      {
-        "name": "2019e629-0c8b-4270-a157-ef6c831649a5",
-        "fromTable": "Order",
-        "fromColumn": "Order Date Key",
-        "toTable": "Date",
-        "toColumn": "Date"
-      },
-      {
-        "name": "a5e66866-ccd0-4263-8298-34f6f3c19aac",
-        "fromTable": "Order",
-        "fromColumn": "Picked Date Key",
-        "toTable": "Date",
-        "toColumn": "Date",
-        "isActive": false
-      },
       {
         "name": "8aaaa588-9664-4af4-9568-99a67503d1bf",
         "fromTable": "Order",
@@ -1000,13 +925,19 @@
         "toColumn": "Stock Item Key"
       },
       {
-        "name": "4b090ce9-7da4-4d3d-9181-e4de7103d0ef",
-        "fromCardinality": "one",
-        "fromTable": "Date",
-        "fromColumn": "Date",
+        "name": "5a03b0d1-0ad3-41ce-91d2-e81402b0d75f",
+        "fromTable": "Order",
+        "fromColumn": "Order Date Key",
+        "toTable": "Time",
+        "toColumn": "Date"
+      },
+      {
+        "name": "7cc036a3-0069-48cc-83ad-102275c3223f",
+        "fromTable": "Order",
+        "fromColumn": "Picked Date Key",
         "toTable": "Time",
         "toColumn": "Date",
-        "crossFilteringBehavior": "bothDirections"
+        "isActive": false
       }
     ],
     "annotations": [

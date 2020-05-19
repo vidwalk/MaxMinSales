@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1022
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "MaxMinSalesDm", "MaxMinSalesDm\MaxMinSalesDm.dwproj", "{F1CC2150-4B18-48C8-B38C-0E926885FAA3}"
 EndProject
@@ -28,6 +28,12 @@ EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "PaymentMethodIS", "PaymentMethodIS\PaymentMethodIS.dtproj", "{3CAB021E-5129-433C-8489-BE2967DF6E39}"
 EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ProfitabilityOverTimeIS", "ProfitabilityOverTimeIS\ProfitabilityOverTimeIS.dtproj", "{BE9B6D10-9F99-42A5-972E-3225A0830242}"
+EndProject
+Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "OrderForecastTabular", "OrderForecastTabular\OrderForecastTabular.smproj", "{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "OrderForecastReports", "OrderForecastReports\OrderForecastReports.rptproj", "{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}"
+EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "OrderForecastIS", "OrderForecastIS\OrderForecastIS.dtproj", "{BDC56EB7-431A-42B5-B1BB-953387546622}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -185,6 +191,36 @@ Global
 		{BE9B6D10-9F99-42A5-972E-3225A0830242}.Development|x86.Build.0 = Development
 		{BE9B6D10-9F99-42A5-972E-3225A0830242}.Release|x86.ActiveCfg = Development
 		{BE9B6D10-9F99-42A5-972E-3225A0830242}.Release|x86.Build.0 = Development
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.Debug|x86.ActiveCfg = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.Debug|x86.Build.0 = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.Debug|x86.Deploy.0 = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.DebugLocal|x86.ActiveCfg = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.DebugLocal|x86.Build.0 = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.DebugLocal|x86.Deploy.0 = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.Development|x86.ActiveCfg = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.Development|x86.Build.0 = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.Development|x86.Deploy.0 = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.Release|x86.ActiveCfg = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.Release|x86.Build.0 = Development|x86
+		{B63A5AF1-CB52-4D29-A7C4-89CAC3AA43EE}.Release|x86.Deploy.0 = Development|x86
+		{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}.Debug|x86.ActiveCfg = Debug
+		{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}.Debug|x86.Build.0 = Debug
+		{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}.Debug|x86.Deploy.0 = Debug
+		{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}.DebugLocal|x86.ActiveCfg = DebugLocal
+		{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}.DebugLocal|x86.Build.0 = DebugLocal
+		{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}.Development|x86.ActiveCfg = DebugLocal
+		{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}.Development|x86.Build.0 = DebugLocal
+		{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}.Release|x86.ActiveCfg = Release
+		{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}.Release|x86.Build.0 = Release
+		{A4238A9E-2131-4AEA-AE71-F2501D6FAF66}.Release|x86.Deploy.0 = Release
+		{BDC56EB7-431A-42B5-B1BB-953387546622}.Debug|x86.ActiveCfg = Development
+		{BDC56EB7-431A-42B5-B1BB-953387546622}.Debug|x86.Build.0 = Development
+		{BDC56EB7-431A-42B5-B1BB-953387546622}.DebugLocal|x86.ActiveCfg = Development
+		{BDC56EB7-431A-42B5-B1BB-953387546622}.DebugLocal|x86.Build.0 = Development
+		{BDC56EB7-431A-42B5-B1BB-953387546622}.Development|x86.ActiveCfg = Development
+		{BDC56EB7-431A-42B5-B1BB-953387546622}.Development|x86.Build.0 = Development
+		{BDC56EB7-431A-42B5-B1BB-953387546622}.Release|x86.ActiveCfg = Development
+		{BDC56EB7-431A-42B5-B1BB-953387546622}.Release|x86.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
