@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1062
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "WWI - Report Services", "WWI - Report Services\WWI - Report Services.rptproj", "{016DD939-2921-4AF0-BE43-8B1B2E6CFFDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{016DD939-2921-4AF0-BE43-8B1B2E6CFFDD}.Debug|Default.ActiveCfg = Debug
+		{016DD939-2921-4AF0-BE43-8B1B2E6CFFDD}.Debug|Default.Build.0 = Debug
+		{016DD939-2921-4AF0-BE43-8B1B2E6CFFDD}.Debug|Default.Deploy.0 = Debug
+		{016DD939-2921-4AF0-BE43-8B1B2E6CFFDD}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{016DD939-2921-4AF0-BE43-8B1B2E6CFFDD}.DebugLocal|Default.Build.0 = DebugLocal
+		{016DD939-2921-4AF0-BE43-8B1B2E6CFFDD}.Release|Default.ActiveCfg = Release
+		{016DD939-2921-4AF0-BE43-8B1B2E6CFFDD}.Release|Default.Build.0 = Release
+		{016DD939-2921-4AF0-BE43-8B1B2E6CFFDD}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {625BCA3D-BB38-4245-9860-AD62F8D9C491}
+	EndGlobalSection
+EndGlobal
