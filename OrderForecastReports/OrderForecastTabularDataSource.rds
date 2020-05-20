@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="OrderForecastTabularDataSource">
+  <ConnectionProperties>
+    <Extension>OLEDB-MD</Extension>
+    <ConnectString>Data Source=DESKTOP-M17BHFK\MSSQLSERVERTM2;Initial Catalog=OrderForecastTabular</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>2541cf4f-2aa8-40a8-b5a4-c172fdb46d77</DataSourceID>
+</RptDataSource>

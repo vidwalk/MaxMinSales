@@ -50,9 +50,11 @@
   </PropertyGroup>
   <ItemGroup>
     <DataSet Include="OrderForecastDataSet.rsd" />
+    <DataSet Include="TabularDataSet.rsd" />
   </ItemGroup>
   <ItemGroup>
     <DataSource Include="OrderForecast.rds" />
+    <DataSource Include="OrderForecastTabularDataSource.rds" />
   </ItemGroup>
   <ItemGroup>
     <Report Include="OrderForecastReport.rdl" />
