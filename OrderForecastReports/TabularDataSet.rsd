@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>OrderForecastTabularDataSource</DataSourceReference>
+      <CommandText>EVALUATE SUMMARIZECOLUMNS('Time'[Year], 'Time'[Month], FILTER(VALUES('Time'[Year]), ('Time'[Year] &lt;&gt; VALUE("2013"))), "Order Count", [Order Count], "Order Count LY", [Order Count LY])</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>DAX</CommandType>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Time</DimensionName>
+                    <HierarchyName>Date Hierarchy</HierarchyName>
+                    <HierarchyUniqueName>[Time].[Date Hierarchy]</HierarchyUniqueName>
+                    <LevelName>Year</LevelName>
+                    <UniqueName>[Time].[Date Hierarchy].[Year]</UniqueName>
+                  </ID>
+                  <ItemCaption>Year</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Time</DimensionName>
+                    <HierarchyName>Date Hierarchy</HierarchyName>
+                    <HierarchyUniqueName>[Time].[Date Hierarchy]</HierarchyUniqueName>
+                    <LevelName>Month</LevelName>
+                    <UniqueName>[Time].[Date Hierarchy].[Month]</UniqueName>
+                  </ID>
+                  <ItemCaption>Month</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>Order Count</MeasureName>
+                    <UniqueName>[Measures].[Order Count]</UniqueName>
+                  </ID>
+                  <ItemCaption>Order Count</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>Order Count LY</MeasureName>
+                    <UniqueName>[Measures].[Order Count LY]</UniqueName>
+                  </ID>
+                  <ItemCaption>Order Count LY</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>Model</From>
+            <Filter>
+              <FilterItems>
+                <FilterItem>
+                  <HierarchyUniqueName>[Time].[Date Hierarchy]</HierarchyUniqueName>
+                  <Condition xsi:type="NotEqualTo">
+                    <Members>
+                      <Member>
+                        <MemberUniqueName>[Time].[Date Hierarchy].[Year].&amp;[2013]</MemberUniqueName>
+                      </Member>
+                    </Members>
+                  </Condition>
+                </FilterItem>
+              </FilterItems>
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties>
+              <IncludeMemberValue>true</IncludeMemberValue>
+            </QueryProperties>
+          </QuerySpecification>
+          <Query>
+            <Statement>EVALUATE SUMMARIZECOLUMNS('Time'[Year], 'Time'[Month], FILTER(VALUES('Time'[Year]), ('Time'[Year] &lt;&gt; VALUE("2013"))), "Order Count", [Order Count], "Order Count LY", [Order Count LY])</Statement>
+            <ParameterDefinitions />
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="Year">
+        <DataField>Time[Year]</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Month">
+        <DataField>Time[Month]</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Order_Count">
+        <DataField>[Order Count]</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Order_Count_LY">
+        <DataField>[Order Count LY]</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
