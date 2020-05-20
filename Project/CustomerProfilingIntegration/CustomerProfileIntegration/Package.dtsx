@@ -11,8 +11,8 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{A9BB7836-A9F5-4C11-B728-75744CFB3DD8}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{1094F280-98B3-42E5-96AA-6E18DE07543F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -473,7 +473,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[Dimension].[Customer]</property>
+                  name="OpenRowset">[dbo].[Customer]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -530,73 +530,32 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Customer]"
-                      cachedDataType="ui8"
-                      cachedName="Customer"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer Key]"
-                      lineageId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Customer]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Buying Group]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Buying Group"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Buying Group]"
                       lineageId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Buying Group]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Customer]"
+                      cachedDataType="ui8"
+                      cachedName="Customer"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer]"
+                      lineageId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Customer]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer Key]"
-                      dataType="i4"
-                      name="Customer Key" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lineage Key]"
-                      dataType="i4"
-                      name="Lineage Key" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI Customer ID]"
-                      dataType="i4"
-                      name="WWI Customer ID" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer]"
-                      dataType="wstr"
-                      length="100"
-                      name="Customer" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bill To Customer]"
-                      dataType="wstr"
-                      length="100"
-                      name="Bill To Customer" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category]"
-                      dataType="wstr"
-                      length="50"
-                      name="Category" />
+                      dataType="numeric"
+                      name="Customer"
+                      precision="10"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Buying Group]"
                       dataType="wstr"
                       length="50"
                       name="Buying Group" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Primary Contact]"
-                      dataType="wstr"
-                      length="50"
-                      name="Primary Contact" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Postal Code]"
-                      dataType="wstr"
-                      length="10"
-                      name="Postal Code" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid From]"
-                      dataType="dbTimeStamp2"
-                      name="Valid From"
-                      scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid To]"
-                      dataType="dbTimeStamp2"
-                      name="Valid To"
-                      scale="7" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -679,28 +638,6 @@
           Id="Package\Data Flow Task\Aggregate"
           TopLeft="130.769235565818,237.939402534723" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[ADO NET Source Output]"
-          TopLeft="195.784618149707,153.57575951113">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,84.3636430235934"
-              Start="0,0"
-              End="0,76.8636430235934">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,76.8636430235934" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Data Flow Task.Paths[Aggregate Output 1]"
           TopLeft="194.015389002851,279.539402534723">
           <EdgeLayout.Curve>
@@ -722,6 +659,28 @@
             <mssgm:EdgeLabel
               BoundingBox="-8,47.0257604503545,16,16"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ADO NET Source Output]"
+          TopLeft="195.784618149707,153.57575951113">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84.3636430235934"
+              Start="0,0"
+              End="0,76.8636430235934">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.8636430235934" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
